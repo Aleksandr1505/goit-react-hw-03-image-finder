@@ -35,27 +35,27 @@ class App extends Component {
 
   fetchingImages = () => {
     const { pageNumber, querySearch } = this.state;
-    API.fetchPhotos(pageNumber, querySearch.toLowerCase())
-      .then(response =>
-        this.setState(
-          prevState => ({
-            imagesArr: [...prevState.imagesArr, ...response.data.hits],
+    API.fetchPhotos(pageNumber, querySearch.toLowerCase()).then(response =>
+      this.setState(
+        prevState => ({
+          imagesArr: [...prevState.imagesArr, ...response.data.hits],
+        }),
+        () =>
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
           }),
-          () => window.scrollTo(0, document.b),
-        ),
-      )
-      .catch();
+      ),
+    );
   };
 
   fetchingNewImages = () => {
     const { pageNumber, querySearch } = this.state;
     API.fetchPhotos(pageNumber, querySearch.toLowerCase())
-      .then(
-        response =>
-          this.setState({
-            imagesArr: [...response.data.hits],
-          }),
-        () => window.scrollTo(0, document.body.scrollHeight),
+      .then(response =>
+        this.setState({
+          imagesArr: [...response.data.hits],
+        }),
       )
       .catch();
   };
