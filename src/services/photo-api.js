@@ -12,3 +12,4 @@ export const fetchPhotos = (pageNumber = 1, querySearch = 'dog') => {
 };
 
 export const o = () => null;
+// export
